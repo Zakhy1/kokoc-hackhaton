@@ -1,3 +1,11 @@
 from django.contrib import admin
 
-# Register your models here.
+from organisations.models import Organisation
+
+
+@admin.register(Organisation)
+class OrganisationAdmin(admin.ModelAdmin):
+    list_display = ["title", "summary", "is_verified"]
+    list_filter = ["is_verified"]
+    search_fields = ["title"]
+    
