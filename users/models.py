@@ -1,7 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from events.models import Event
 from organisations.models import Organisation
+
+
+class Achievements(models.Model):
+    title = models.CharField(max_length=255)
+    icon = models.ImageField(upload_to="achievements/%Y/%m/%d/")
 
 
 class User(AbstractUser):
@@ -11,4 +17,5 @@ class User(AbstractUser):
                                 on_delete=models.CASCADE,
                                 related_name="organisation",
                                 null=True, blank=True)
-    # events = models.ManyToManyField
+    achievements = models.ManyToManyField(Achievements)
+    events = models.ManyToManyField(Event)
