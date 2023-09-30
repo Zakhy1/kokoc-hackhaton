@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Organisation(models.Model):
@@ -7,7 +8,7 @@ class Organisation(models.Model):
     summary = models.PositiveIntegerField(default=0)
     OGRN = models.PositiveIntegerField()
     is_verified = models.BooleanField(default=False)
-    owner = models.OneToOneField("users.User", on_delete=models.CASCADE)
+    owner = models.ForeignKey("users.User", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -27,8 +28,11 @@ class Fund(models.Model):
     title = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
     donated = models.PositiveIntegerField(default=0)
-    owner = models.OneToOneField("users.User", on_delete=models.CASCADE)
+    owner = models.ForeignKey("users.User", on_delete=models.CASCADE)
     logo = models.ImageField(upload_to="fund-logos/%Y/%m/%d/")
+
+    # def get_absolute_url(self):
+    #     return reverse("organ")
 
     def __str__(self):
         return self.title
