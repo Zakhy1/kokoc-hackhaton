@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from events.models import Activity, Period, Event, ActivityProof
+from events.models import Activity, Period, Event, EventProof
 
 
 @admin.register(Activity)
@@ -9,10 +9,10 @@ class ActivityAdmin(admin.ModelAdmin):
     search_fields = ["title"]
 
 
-@admin.register(ActivityProof)
-class ActivityProofAdmin(admin.ModelAdmin):
-    list_display = ["user", "activity"]
-    list_filter = ["user", "activity"]
+@admin.register(EventProof)
+class EventProofAdmin(admin.ModelAdmin):
+    list_display = ["user", "event", "сonfirmed"]
+    list_filter = ["user", "event"]
     search_fields = ["user"]
 
 

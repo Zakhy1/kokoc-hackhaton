@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 from organisations.models import Fund
-from users.models import User
+from users.models import User, Achievements
 
 
 @admin.register(User)
@@ -17,3 +17,11 @@ class FundAdmin(admin.ModelAdmin):
     list_filter = ["title"]
     search_fields = ["title"]
     readonly_fields = ["donated"]
+
+
+@admin.register(Achievements)
+class AchievementsAdmin(admin.ModelAdmin):
+    list_display = ["title"]
+    list_filter = ["title"]
+    search_fields = ["title"]
+

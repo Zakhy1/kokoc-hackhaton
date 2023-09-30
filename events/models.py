@@ -34,14 +34,15 @@ class Event(models.Model):
         return self.title
 
 
-class ActivityProof(models.Model):
+class EventProof(models.Model):
     user = models.ForeignKey("users.User",
                              on_delete=models.CASCADE,
                              related_name="users")
-    activity = models.ForeignKey("Activity",
-                                 on_delete=models.CASCADE,
-                                 related_name="activities")
+    event = models.ForeignKey("Event",
+                              on_delete=models.CASCADE,
+                              related_name="activities")
     screenshot = models.ImageField(upload_to="proofs/%Y/%m/%d/")
+    сonfirmed = models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.user} - {self.activity}"
+        return f"{self.user} - {self.event}"
