@@ -29,6 +29,7 @@ class Event(models.Model):
     fund = models.ForeignKey("organisations.Fund",
                              on_delete=models.CASCADE,
                              related_name="funds")
+    proof_needs = models.SmallIntegerField(default=0)
 
     def __str__(self):
         return self.title

@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
+from events.models import EventProof
 from users.forms import UserRegistrationForm, UserEditForm
 
 
@@ -36,4 +37,8 @@ def edit(request):
 
 
 def profile(request):
-    return render(request, "users/profile.html", {})
+    user = request.user
+    events_active = user.events.all()
+    events_done = user.events_done.all()
+    return render(request, "users/profile.html",
+                  {"user": user, "events_active": events_active, "events_done": events_done})

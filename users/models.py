@@ -15,6 +15,9 @@ class Achievements(models.Model):
     icon = models.ImageField(upload_to="achievements/%Y/%m/%d/")
     description = models.CharField(max_length=255, blank=True, null=True)
 
+    def __str__(self):
+        return self.title
+
 
 class User(AbstractUser):
     username = None
@@ -30,6 +33,7 @@ class User(AbstractUser):
                                       null=True, blank=True)
     achievements = models.ManyToManyField(Achievements, blank=True)
     events = models.ManyToManyField(Event, blank=True)
+    events_done = models.ManyToManyField(Event, blank=True, related_name="done")
     post_index = models.PositiveIntegerField(default=101000)
     address = models.CharField(max_length=255, default="г. Москва, Ул. Ленина, д. 5, кв. 10")
 
@@ -40,3 +44,6 @@ class User(AbstractUser):
     REQUIRED_FIELDS = []
 
     objects = CustomUserManager()
+
+    def __str__(self):
+        return f"{self.last_name} {self.first_name} {self.surname}"

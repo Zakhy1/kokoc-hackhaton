@@ -1,4 +1,6 @@
-{% extends "auth_base.html" %}
+{% extends "base.html" %}
+{% load static %}
+{% block css %}<link href="{% static 'css/LoginPageStyles.css' %}" rel="stylesheet">{% endblock %}
 {% block title %}Регистрация{% endblock %}
 
 {% block content %}

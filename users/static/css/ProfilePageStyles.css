@@ -148,7 +148,7 @@ html, body{
     flex-direction: row;
 }
 .achivmentImage{
-    display: inline-block;
+    display: inline;
     width: 30px;
     height: 40px;
     background-image: url(../img/icons/achivmentIcon.svg);
@@ -156,9 +156,21 @@ html, body{
     background-position: center;
     object-fit: cover;
     background-size: cover;
+    margin-right: 15px;
 }
 .some{
     display: flex;
     align-items: center;
     justify-content: center;
+}
+.achievements {
+    display: flex;
+    flex-direction: row;
+}
+
+.activityImage2{
+    width: 260px;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 20px;
 }

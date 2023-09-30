@@ -1,2 +1,175 @@
 {% extends "base.html" %}
 {% block title %}Профиль{% endblock %}
+{% load static %}
+{% block css %}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/ProfilePageStyles.css' %}"/>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container-md mt-5 w-100 backRow">
+        <div class="row backRow">
+            <div class="col-md">
+                <div class="container-md blockProfile">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img class="profileImg"
+                                 src="{{ MEDIA_URL }}{{ user.profile_image.url }}"/>
+                        </div>
+                        <div class="col-md">
+                            <div class="profileProperties">
+                                <p>{{ user.first_name }}</p>
+                                <p>{{ user.last_name }}</p>
+                                <p>{{ user.surname }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="profilePropertiesBottom">
+                                <p>Дата рождения: <span>{{ user.date_of_birth|date:"d.m.Y" }}</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="profilePropertiesBottom">
+                                <p>Статус: <span>
+                                    {% if user.is_boss %} Руководитель организации
+                                    {% elif user.owner_of_fund %} Руководитель фонда
+                                    {% else %}Участник
+                                    {% endif %}
+                                    </span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md">
+                <div class="blockAbout">
+                    <div class="row">
+                        <div class="col-md">
+                            <p>Организация: <span>{{ user.department.organisation.title }}</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <p>Руководитель: <span>{{ user.department.organisation.owner }}</span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md">
+                            <p>Адрес: <span>{{ user.address }}</span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="blockAbout">
+                    <div class="achivments">
+                        <p>Достижения</p>
+                        <div class="achievements">
+                            {% for achive in user.achievements.all %}
+                                <div class="achivmentImage"></div>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-md mt-2 w-100 backRow">
+        <div class="row backRow">
+            <div class="col-md">
+                <div class="blockTitle">
+                    <p>Активные</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for item in events_active %}
+        <div class="container-md mt-2 w-100 backRow">
+            <div class="row backRow">
+                <div class="col-md">
+                    <div class="blockProfile">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="some">
+                                        <img src="{{ item.fund.logo.url }}"
+                                             class="activityImage2"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="flexActivityDescriыption">
+                                        <h2>{{ item.title }}</h2>
+                                        <p>Фонд: {{ item.fund.title }}</p>
+                                        <p class="descriptionOnActive">{{ item.description }}</p>
+                                        <div class="activityButtons">
+                                            <div></div>
+                                            <input type="button" value="Подтвердить активность"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="container-md mt-2 w-100 backRow">
+        <div class="row backRow">
+            <div class="col-md">
+                <div class="blockTitle">
+                    <p>Пройденые</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% for item in events_done %}
+        <div class="container-md mt-2 w-100 backRow">
+            <div class="row backRow">
+                <div class="col-md mb-4">
+                    <div class="blockConfirmed">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="some">
+                                        <img src="{{ item.fund.logo.url }}"
+                                             class="activityImage2"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="flexActivityDescriыption">
+                                        <h2>{{ item.title }}</h2>
+                                        <p>Фонд: {{ item.fund.title }}</p>
+                                        <p class="descriptionOnActive">{{ item.description }}</p>
+                                        <div class="activityButtons">
+                                            <p>Сумма: <span>{{ item.price }}</span></p>
+                                            <input type="button" value="Подробнее"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    <div class="container-fluid mt-5">
+        <div class="footer">
+            <h2>Copyright SPORT.LIFE 2023</h2>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+            integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+            crossorigin="anonymous"></script>
+{% endblock %}

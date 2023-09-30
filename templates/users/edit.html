@@ -1,5 +1,6 @@
 {% extends "base.html" %}
-
+{% load static %}
+{% block css %}<link href="{% static 'css/LoginPageStyles.css' %}" rel="stylesheet">{% endblock %}
 {% block title %}Редактирование профиля{% endblock %}
 
 {% block content %}
@@ -11,12 +12,12 @@
                     {{ error }}
                 {% endfor %}
             {% endif %}
-                <form method="post" class="inputs" enctype="multipart/form-data" novalidate>
-                    {% csrf_token %}
-                    {{ user_form.as_p }}
+            <form method="post" class="inputs" enctype="multipart/form-data" novalidate>
+                {% csrf_token %}
+                {{ user_form.as_p }}
 
-                    <br><input type="submit" class="regButton" value="Изменить">
-                </form>
+                <br><input type="submit" class="regButton" value="Изменить">
+            </form>
         </div>
     </div>
 {% endblock %}

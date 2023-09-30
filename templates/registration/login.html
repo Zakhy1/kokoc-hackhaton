@@ -1,6 +1,10 @@
-{% extends "auth_base.html" %}
+{% extends "base.html" %}
 {#{% load socialaccount %}#}
 {% load form_extras %}
+{% load static %}
+{% block css %}
+	    <link rel="stylesheet" href="{% static 'css/LoginPageStyles.css' %}"/>
+{% endblock %}
 {% block title %}Вход{% endblock %}
 
 {% block content %}
