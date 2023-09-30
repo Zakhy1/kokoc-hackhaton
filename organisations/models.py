@@ -11,3 +11,18 @@ class Organisation(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Department(models.Model):
+    title = models.CharField(max_length=255)
+    organisation = models.ForeignKey(Organisation,
+                                     on_delete=models.CASCADE,
+                                     related_name="departments")
+
+
+class Fund(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.CharField(max_length=255)
+    donated = models.PositiveIntegerField(default=0)
+    owner = models.OneToOneField("users.User", on_delete=models.CASCADE)
+    logo = models.ImageField(upload_to="fund-logos/%Y/%m/%d/")

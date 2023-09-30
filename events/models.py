@@ -26,6 +26,9 @@ class Event(models.Model):
     period = models.ForeignKey(Period,
                                on_delete=models.CASCADE,
                                related_name="period")
+    fund = models.ForeignKey("organisations.Fund",
+                             on_delete=models.CASCADE,
+                             related_name="funds")
 
     def __str__(self):
         return self.title
