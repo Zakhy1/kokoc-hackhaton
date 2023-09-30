@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}Выход{% endblock %}
+
+{% block content %}
+  <p style="text-align: center; margin-top: 250px;">
+    You have been successfully logged out.
+    You can <a href="{% url "users:login" %}">log-in again</a>.
+  </p>
+{% endblock %}

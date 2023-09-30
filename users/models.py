@@ -23,8 +23,8 @@ class User(AbstractUser):
                                    on_delete=models.CASCADE,
                                    related_name="departments",
                                    null=True, blank=True)
-    achievements = models.ManyToManyField(Achievements, blank=True, null=True)
-    events = models.ManyToManyField(Event, blank=True, null=True)
+    achievements = models.ManyToManyField(Achievements, blank=True)
+    events = models.ManyToManyField(Event, blank=True)
     post_index = models.PositiveIntegerField(default=101000)
     address = models.CharField(max_length=255, default="г. Москва, Ул. Ленина, д. 5, кв. 10")
 

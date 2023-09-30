@@ -1,0 +1,35 @@
+{% extends "auth_base.html" %}
+{#{% load socialaccount %}#}
+{% load form_extras %}
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+
+    <div class="registerMainWindow">
+        <div class="registerWindow">
+            <div class="logo"></div>
+            <form class="inputs" method="post" novalidate>
+                {% csrf_token %}
+                {{ form.username|add_attribute:"Введите электронную почту" }}
+                {{ form.password|add_attribute:"Введите пароль" }}
+                <input class="regButton" value="Войти" type="submit"/>
+            </form>
+            Еще не зарегистрированы?<a href="{% url "users:register" %}">Зарегистрируйтесь</a>.
+        </div>
+    </div>
+{% endblock %}
+{#  <div class="social">#}
+{#    <ul>#}
+{#      <li class="facebook">#}
+{#        <a href="{% provider_login_url "vk" %}">#}
+{#          Sign in with VK#}
+{#        </a>#}
+{#      </li>#}
+{#      <li class="google">#}
+{#        <a href="{% provider_login_url "google" %}">#}
+{#          Sign in with Google#}
+{#        </a>#}
+{#      </li>#}
+{#    </ul>#}
+{#  </div>#}
+

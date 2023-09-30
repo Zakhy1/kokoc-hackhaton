@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -9,7 +10,6 @@ SECRET_KEY = "django-insecure-y*c80s*1=u@k2*=e15(zyhw=m0yx=neawwd3b)kmz%uf)(zs6d
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -56,7 +56,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "project.wsgi.application"
 
-
 # Database
 
 DATABASES = {
@@ -85,7 +84,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 LANGUAGE_CODE = "ru"
 
@@ -97,6 +95,10 @@ USE_TZ = True
 
 # static
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "users/static"),
+]
 
 # media
 MEDIA_URL = "media/"
@@ -105,3 +107,7 @@ MEDIA_ROOT = BASE_DIR / "media"
 # auth
 
 AUTH_USER_MODEL = "users.User"
+
+# email
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
