@@ -19,6 +19,9 @@ class Department(models.Model):
                                      on_delete=models.CASCADE,
                                      related_name="departments")
 
+    def __str__(self):
+        return self.title
+
 
 class Fund(models.Model):
     title = models.CharField(max_length=255)
@@ -26,3 +29,6 @@ class Fund(models.Model):
     donated = models.PositiveIntegerField(default=0)
     owner = models.OneToOneField("users.User", on_delete=models.CASCADE)
     logo = models.ImageField(upload_to="fund-logos/%Y/%m/%d/")
+
+    def __str__(self):
+        return self.title
