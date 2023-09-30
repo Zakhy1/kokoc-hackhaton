@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block title %}Редактирование профиля{% endblock %}
+
+{% block content %}
+    <div class="registerMainWindow">
+        <div class="registerWindow">
+            <div class="logo"></div>
+            {% if user_form.errors %}
+                {% for error in user_form.errors %}
+                    {{ error }}
+                {% endfor %}
+            {% endif %}
+                <form method="post" class="inputs" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+                    {{ user_form.as_p }}
+
+                    <br><input type="submit" class="regButton" value="Изменить">
+                </form>
+        </div>
+    </div>
+{% endblock %}

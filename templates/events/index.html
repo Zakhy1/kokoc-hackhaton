@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block tite %}Главная{% endblock %}
+
+{% block content %}
+    <p><a href="{% url "users:register" %}">Регистрация пользователя</a></p>
+    <p><a href="#">Регистрация организации</a></p>
+    <p><a href="#">Регистрация фонда</a></p>
+    <p><a href="{% url "users:profile" %}">Профиль</a></p>
+    <p><a href="{% url "users:edit" %}">Изменить профиль</a></p>
+{% endblock %}

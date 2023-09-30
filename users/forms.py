@@ -14,7 +14,7 @@ class UserRegistrationForm(forms.ModelForm):
             "email": ""
         }
         widgets = {
-            'email': forms.EmailInput(attrs={'placeholder': 'Введите email'})
+            'email': forms.EmailInput(attrs={"placeholder": "Введите email"})
         }
 
     def clean_password2(self):
@@ -28,3 +28,13 @@ class UserRegistrationForm(forms.ModelForm):
         if User.objects.filter(email=data).exists():
             raise forms.ValidationError("Email already in use.")
         return data
+
+
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["first_name", "last_name", "surname",
+                  "department", "profile_image", "post_index",
+                  "address", "date_of_birth"]
+
+
