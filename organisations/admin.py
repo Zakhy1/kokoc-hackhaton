@@ -8,4 +8,4 @@ class OrganisationAdmin(admin.ModelAdmin):
     list_display = ["title", "summary", "is_verified"]
     list_filter = ["is_verified"]
     search_fields = ["title"]
-    
+    readonly_fields = ["summary"]
