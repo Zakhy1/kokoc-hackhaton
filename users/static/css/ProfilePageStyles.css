@@ -1,0 +1,164 @@
+*{
+    font-family: 'Ubuntu', sans-serif;
+}
+html, body{
+    background-color: #CEFFE8;
+    color: white;
+}
+.backRow{
+    background-color: #CEFFE8 !important;
+}
+.blockProfile{
+    background-color: #4DA396;
+    padding: 20px;
+    border-radius: 15px;
+    min-height: 330px;
+    margin-bottom: 30px;
+    -webkit-box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.blockAbout{
+    background-color: #4DA396;
+    padding: 20px;
+    border-radius: 15px;
+    min-height: 150px;
+    margin-bottom: 30px;
+    color: white;
+    font-size: 17px;
+    -webkit-box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
+    -moz-box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
+    box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
+}
+.blockConfirmed{
+    background-color: #4DA396;
+    border-radius: 10px;
+    min-height: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    -webkit-box-shadow: 1px 11px 8px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 1px 11px 8px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 11px 8px 0px rgba(0, 0, 0, 0.2);
+}
+.footer{
+    background-color: #4DA396;
+    min-height: 400px;
+    width: 100%;
+}
+.profileImg{
+    border-radius: 50%;
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+}
+.profileProperties{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    color: white;
+    font-size: 30px;
+}
+.profilePropertiesBottom{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    color: white;
+    font-size: 30px;
+}
+.blockTitle{
+    margin-left: 20px;
+    font-size: 38px;
+    font-weight: bold;
+    color: #C7917F !important;
+}
+.confirmedImage{
+    width: 300px;
+    height: 300px;
+    background-image: url(https://bf-m.ru/wp-content/uploads/2022/05/logo_fonda_2-01.png);
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+.flexActivityDescription p{
+    font-size: 30px;
+}
+.descriptionOnActive{
+    font-size: 17px;
+}
+.activityButtons{
+    display: flex;
+    justify-content: space-between;
+}
+.activityButtons input{
+    background-color: #40877c;
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 20px;
+}
+.activityButtons input:hover{
+    background-color: #37736a;
+}
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;  
+}
+.activityImage{
+    width: 300px;
+    height: 300px;
+    background-image: url(https://sun9-2.userapi.com/impg/e46hw_bqxdPrRM6jFrLJnxbhr2OHYYYJiEvgRw/iws3oGXWEOA.jpg?size=1068x1600&quality=95&sign=bb6990a5f9d48e74064f4dd8827785b5&type=album);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer h2{
+    display: inline;
+}
+.activityButtons p{
+    font-size: 25px;
+}
+.achivments{
+    display: flex;
+    flex-direction: column;
+}
+.achivments p{
+    font-size: 25px;
+    color: #C7917F;
+    font-weight: bold;
+}
+.swiper{
+    color: black;
+}
+.achivmentsItem{
+    width: 30px;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #37736a;
+    flex-direction: row;
+}
+.achivmentImage{
+    display: inline-block;
+    width: 30px;
+    height: 40px;
+    background-image: url(../img/icons/achivmentIcon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+    background-size: cover;
+}
+.some{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
