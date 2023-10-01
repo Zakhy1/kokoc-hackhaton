@@ -44,6 +44,7 @@
                                     {% else %}Участник
                                     {% endif %}
                                     </span></p>
+                                <a href="{% url 'users:edit' %}" style="font-size: large">Изменить профиль</a>
                             </div>
                         </div>
                     </div>
@@ -110,7 +111,8 @@
                                         <p class="descriptionOnActive">{{ item.description }}</p>
                                         <div class="activityButtons">
                                             <a href="#" class="buttons">Отказаться от активности</a>
-                                            <a href="#" class="buttons">Подтвердить активность</a>
+                                            <a href="{% url "events:proof" item.id %}" class="buttons">Подтвердить
+                                                активность</a>
                                         </div>
                                     </div>
                                 </div>

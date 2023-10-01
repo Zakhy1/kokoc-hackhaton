@@ -1,0 +1,32 @@
+{% extends 'auth_base.html' %}
+{% load form_extras %}
+{% load static %}
+{% block title %}Подтверждение активности{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static "css/LoginPageStyles.css" %}">
+    <link rel="icon" href="{% static "img/icons/favicon.png" %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="registerMainWindow">
+        <div class="registerWindow">
+            <a href="{% url "events:index" %}">
+                <div class="logo"></div>
+            </a>
+            {% if messages %}
+                <ul class="errorlist">
+                    {% for message in messages %}
+                        <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form class="inputs" method="post" novalidate style="align-items: center; margin-bottom: 30px;"
+                  enctype="multipart/form-data">
+                {{ form.as_div }}
+                {% csrf_token %}
+                <button type="submit" class="regButton">Подтвердить</button>
+            </form>
+        </div>
+{% endblock %}

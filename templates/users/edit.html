@@ -1,11 +1,12 @@
 {% extends "base.html" %}
+{% load form_extras %}
 {% load static %}
 {% block css %}<link href="{% static 'css/LoginPageStyles.css' %}" rel="stylesheet">{% endblock %}
 {% block title %}Редактирование профиля{% endblock %}
 
 {% block content %}
     <div class="registerMainWindow">
-        <div class="registerWindow">
+        <div class="registerWindow" style="height: auto;">
             <div class="logo"></div>
             {% if user_form.errors %}
                 {% for error in user_form.errors %}
@@ -14,7 +15,15 @@
             {% endif %}
             <form method="post" class="inputs" enctype="multipart/form-data" novalidate>
                 {% csrf_token %}
-                {{ user_form.as_p }}
+
+                {{ user_form.first_name|add_attribute:"Имя" }}
+                {{ user_form.last_name|add_attribute:"Фамилия" }}
+                {{ user_form.surname|add_attribute:"Отчество" }}<br>
+                {{ user_form.department|add_attribute:"Отдел" }}<br>
+                {{ user_form.profile_image|add_attribute:"Аватар" }}
+                {{ user_form.post_index|add_attribute:"Почтовый индекс" }}
+                {{ user_form.address|add_attribute:"Адрес" }}
+                {{ user_form.date_of_birth|add_attribute:"Дата рождения" }}
 
                 <br><input type="submit" class="regButton" value="Изменить">
             </form>

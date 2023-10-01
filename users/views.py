@@ -23,7 +23,7 @@ def register_user(request):
 @login_required
 def edit(request):
     if request.method == "POST":
-        user_form = UserEditForm(request.POST)
+        user_form = UserEditForm(request.POST, files=request.FILES)
         if user_form.is_valid():
             user_form.save()
             messages.success(request, "Профиль обновлен")
