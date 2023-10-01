@@ -4,10 +4,12 @@ from django.shortcuts import render, redirect
 
 from events.forms import EventConfirmForm
 from events.models import Event, EventProof
+from organisations.models import Fund
 
 
 def index(request):
-    return render(request, "events/index.html")
+    funds = Fund.objects.all()
+    return render(request, "events/index.html", {"funds": funds})
 
 
 @login_required

@@ -4,7 +4,7 @@ from django.urls import reverse
 
 class Organisation(models.Model):
     title = models.CharField(max_length=128)
-    description = models.CharField(max_length=255)
+    description = models.TextField()
     summary = models.PositiveIntegerField(default=0)
     OGRN = models.PositiveIntegerField()
     is_verified = models.BooleanField(default=False)
@@ -26,7 +26,7 @@ class Department(models.Model):
 
 class Fund(models.Model):
     title = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
+    description = models.TextField()
     donated = models.PositiveIntegerField(default=0)
     owner = models.ForeignKey("users.User", on_delete=models.CASCADE)
     logo = models.ImageField(upload_to="fund-logos/%Y/%m/%d/")

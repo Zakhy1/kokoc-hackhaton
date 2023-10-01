@@ -1,5 +1,6 @@
 from datetime import date
 
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
@@ -25,6 +26,7 @@ class User(AbstractUser):
     is_boss = models.BooleanField(default=False)
     is_fond_owner = models.BooleanField(default=False)
     profile_image = models.ImageField(upload_to="profiles/%Y/%m/%d/", blank=True, null=True)
+    company = models.ForeignKey(Organisation, on_delete=models.CASCADE, related_name="org", blank=True, null=True)
     department = models.ForeignKey(Department,
                                    on_delete=models.CASCADE,
                                    related_name="departments",

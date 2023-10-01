@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "auth_base.html" %}
 {% load form_extras %}
 {% load static %}
 {% block css %}<link href="{% static 'css/LoginPageStyles.css' %}" rel="stylesheet">{% endblock %}
@@ -7,7 +7,7 @@
 {% block content %}
     <div class="registerMainWindow">
         <div class="registerWindow" style="height: auto;">
-            <div class="logo"></div>
+            <a href="{% url "events:index" %}"><div class="logo"></div></a>
             {% if user_form.errors %}
                 {% for error in user_form.errors %}
                     {{ error }}
@@ -19,6 +19,7 @@
                 {{ user_form.first_name|add_attribute:"Имя" }}
                 {{ user_form.last_name|add_attribute:"Фамилия" }}
                 {{ user_form.surname|add_attribute:"Отчество" }}<br>
+                {{ user_form.company|add_attribute:"Организация" }}<br>
                 {{ user_form.department|add_attribute:"Отдел" }}<br>
                 {{ user_form.profile_image|add_attribute:"Аватар" }}
                 {{ user_form.post_index|add_attribute:"Почтовый индекс" }}

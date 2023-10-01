@@ -23,12 +23,13 @@ def register_user(request):
 @login_required
 def edit(request):
     if request.method == "POST":
-        user_form = UserEditForm(request.POST, files=request.FILES)
+        user_form = UserEditForm(request.POST, files=request.FILES, instance=request.user)
         if user_form.is_valid():
             user_form.save()
             messages.success(request, "Профиль обновлен")
         else:
-            messages.error(request, "Ошибка при обновлении профиля")
+            messages.error(request,
+                           "Ошибка при обновлении профиля. Возможно вы выбрали несоответствующий отдел или организацию")
     else:
         user_form = UserEditForm(instance=request.user)
     return render(request, "users/edit.html",

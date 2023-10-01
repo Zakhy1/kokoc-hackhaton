@@ -17,8 +17,11 @@
                 <div class="container-md blockProfile">
                     <div class="row">
                         <div class="col-md-4">
-                            <img class="profileImg"
-                                 src="{{ MEDIA_URL }}{{ user.profile_image.url }}"/>
+                            {% if user.profile_image %}
+                                <img class="profileImg"
+                                     src="{{ MEDIA_URL }}{{ user.profile_image.url }}"/>
+                            {% endif %}
+
                         </div>
                         <div class="col-md">
                             <div class="profileProperties">
@@ -40,11 +43,12 @@
                             <div class="profilePropertiesBottom">
                                 <p>Статус: <span>
                                     {% if user.is_boss %} Руководитель организации
-                                    {% elif user.owner_of_fund %} Руководитель фонда
+                                    {% elif user.is_fond_owner %} Руководитель фонда
                                     {% else %}Участник
                                     {% endif %}
                                     </span></p>
                                 <a href="{% url 'users:edit' %}" style="font-size: large">Изменить профиль</a>
+                                <p><a href="{% url "users:logout" %}" style="font-size: large">Выход</a></p>
                             </div>
                         </div>
                     </div>
@@ -54,12 +58,20 @@
                 <div class="blockAbout">
                     <div class="row">
                         <div class="col-md">
-                            <p>Организация: <span>{{ user.department.organisation.title }}</span></p>
+                            <p>Организация: <span>{% if user.is_fond_owner %}
+                                {{ user.fund_set.first.title }}
+                            {% endif %}
+                                {{ user.department.organisation.title }}</span></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md">
-                            <p>Руководитель: <span>{{ user.department.organisation.owner }}</span></p>
+                            <p>Руководитель: <span>
+                                {% if user.is_fond_owner %}
+                                    Вы
+                                {% else %}
+                                    {{ user.department.organisation.owner }}
+                                {% endif %}</span></p>
                         </div>
                     </div>
                     <div class="row">
@@ -70,7 +82,11 @@
                 </div>
                 <div class="blockAbout">
                     <div class="achivments">
-                        <p>Достижения</p>
+                        {% if not user.is_boss and not user.is_fond_owner %}
+                            <p>Статистика</p>
+                        {% else %}
+                            <p>Достижения</p>
+                        {% endif %}
                         <div class="achievements">
                             {% for achive in user.achievements.all %}
                                 <div class="achivmentImage" title="{{ achive.title }}"></div>
@@ -82,37 +98,39 @@
             </div>
         </div>
     </div>
-    <div class="container-md mt-2 w-100 backRow">
-        <div class="row backRow">
-            <div class="col-md">
-                <div class="blockTitle">
-                    <p>Активные</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% for item in events_active %}
+    {% if not user.is_boss and not user.is_fond_owner %}
         <div class="container-md mt-2 w-100 backRow">
             <div class="row backRow">
                 <div class="col-md">
-                    <div class="blockProfile">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="some" style="justify-content: flex-start">
-                                        <img src="{{ item.fund.logo.url }}"
-                                             class="activityImage2"/>
+                    <div class="blockTitle">
+                        <p>Активные</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for item in events_active %}
+            <div class="container-md mt-2 w-100 backRow">
+                <div class="row backRow">
+                    <div class="col-md">
+                        <div class="blockProfile">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="some" style="justify-content: flex-start">
+                                            <img src="{{ item.fund.logo.url }}"
+                                                 class="activityImage2"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="flexActivityDescriыption">
-                                        <h2>{{ item.title }}</h2>
-                                        <p>Фонд: {{ item.fund.title }}</p>
-                                        <p class="descriptionOnActive">{{ item.description }}</p>
-                                        <div class="activityButtons">
-                                            <a href="#" class="buttons">Отказаться от активности</a>
-                                            <a href="{% url "events:proof" item.id %}" class="buttons">Подтвердить
-                                                активность</a>
+                                    <div class="col-md-8">
+                                        <div class="flexActivityDescriыption">
+                                            <h2>{{ item.title }}</h2>
+                                            <p>Фонд: {{ item.fund.title }}</p>
+                                            <p class="descriptionOnActive">{{ item.description }}</p>
+                                            <div class="activityButtons">
+                                                <a href="#" class="buttons">Отказаться от активности</a>
+                                                <a href="{% url "events:proof" item.id %}" class="buttons">Подтвердить
+                                                    активность</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -121,38 +139,40 @@
                     </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
-    <div class="container-md mt-2 w-100 backRow">
-        <div class="row backRow">
-            <div class="col-md">
-                <div class="blockTitle">
-                    <p>Пройденые</p>
-                </div>
-            </div>
-        </div>
-    </div>
-    {% for item in events_done %}
+        {% endfor %}
+
+
         <div class="container-md mt-2 w-100 backRow">
             <div class="row backRow">
-                <div class="col-md mb-4">
-                    <div class="blockConfirmed">
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <div class="some" style="justify-content: flex-start;">
-                                        <img src="{{ item.fund.logo.url }}"
-                                             class="activityImage2"/>
+                <div class="col-md">
+                    <div class="blockTitle">
+                        <p>Пройденые</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% for item in events_done %}
+            <div class="container-md mt-2 w-100 backRow">
+                <div class="row backRow">
+                    <div class="col-md mb-4">
+                        <div class="blockConfirmed">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="some" style="justify-content: flex-start;">
+                                            <img src="{{ item.fund.logo.url }}"
+                                                 class="activityImage2"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="flexActivityDescriыption">
-                                        <h2>{{ item.title }}</h2>
-                                        <p>Фонд: {{ item.fund.title }}</p>
-                                        <p class="descriptionOnActive">{{ item.description }}</p>
-                                        <div class="activityButtons">
-                                            <p>Сумма: <span>{{ item.price }}</span></p>
-                                            <input type="button" value="Подробнее"/>
+                                    <div class="col-md-8">
+                                        <div class="flexActivityDescriыption">
+                                            <h2>{{ item.title }}</h2>
+                                            <p>Фонд: {{ item.fund.title }}</p>
+                                            <p class="descriptionOnActive">{{ item.description }}</p>
+                                            <div class="activityButtons">
+                                                <p>Сумма: <span>{{ item.price }}</span></p>
+                                                <input type="button" value="Подробнее"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -161,8 +181,11 @@
                     </div>
                 </div>
             </div>
-        </div>
-    {% endfor %}
+        {% endfor %}
+    {% else %}
+        you boss
+    {% endif %}
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

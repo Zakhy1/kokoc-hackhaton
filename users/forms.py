@@ -1,5 +1,6 @@
 from django import forms
 
+from organisations.models import Organisation
 from users.models import User
 
 
@@ -34,7 +35,16 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ["first_name", "last_name", "surname",
-                  "department", "profile_image", "post_index",
+                  "department", "company", "profile_image", "post_index",
                   "address", "date_of_birth"]
 
+    def clean(self):
+        cleaned_data = super().clean()
+        organisation = cleaned_data.get('company')
+        department = cleaned_data.get('department')
 
+        if organisation and department:
+            if department.organisation != organisation:
+                raise forms.ValidationError("Выбранный отдел не принадлежит выбранной организации.")
+
+        return cleaned_data

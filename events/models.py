@@ -18,7 +18,7 @@ class Period(models.Model):
 
 class Event(models.Model):
     title = models.CharField(max_length=128)
-    description = models.CharField(max_length=255)
+    description = models.TextField()
     price = models.PositiveIntegerField(default=990)
     activity = models.ForeignKey(Activity,
                                  on_delete=models.CASCADE,
