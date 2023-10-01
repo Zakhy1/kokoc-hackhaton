@@ -1,9 +1,13 @@
-{% extends "base.html" %}
+{% extends "auth_base.html" %}
 {#{% load socialaccount %}#}
 {% load form_extras %}
 {% load static %}
 {% block css %}
-	    <link rel="stylesheet" href="{% static 'css/LoginPageStyles.css' %}"/>
+    <link rel="stylesheet" href="{% static "css/LoginPageStyles.css" %}">
+    <link rel="icon" href="{% static "img/icons/favicon.png" %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
 {% endblock %}
 {% block title %}Вход{% endblock %}
 
@@ -11,8 +15,17 @@
 
     <div class="registerMainWindow">
         <div class="registerWindow">
-            <div class="logo"></div>
-            <form class="inputs" method="post" novalidate>
+            <a href="{% url "events:index" %}"><div class="logo"></div></a>
+            {% if form.errors %}
+                <ul class="errorlist">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li>{{ field }}: {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <form class="inputs" method="post" novalidate style="align-items: center; margin-bottom: 30px;">
                 {% csrf_token %}
                 {{ form.username|add_attribute:"Введите электронную почту" }}
                 {{ form.password|add_attribute:"Введите пароль" }}

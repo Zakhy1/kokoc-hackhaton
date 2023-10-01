@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from events.models import EventProof
 from users.forms import UserRegistrationForm, UserEditForm
@@ -13,8 +13,7 @@ def register_user(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data["password"])
             new_user.save()
-            return render(request, "users/register_done.html",
-                          {"new_user": new_user})
+            return redirect("users:login")
 
     user_form = UserRegistrationForm()
     return render(request, "users/register.html",
@@ -36,6 +35,7 @@ def edit(request):
                   {"user_form": user_form})
 
 
+@login_required
 def profile(request):
     user = request.user
     events_active = user.events.all()

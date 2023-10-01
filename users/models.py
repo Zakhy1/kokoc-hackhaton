@@ -39,6 +39,7 @@ class User(AbstractUser):
 
     email = models.EmailField(_("email address"), unique=True)
     date_of_birth = models.DateField(default=date.today)
+    coins = models.PositiveIntegerField(default=0)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []

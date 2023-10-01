@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "auth_base.html" %}
 {% load static %}
 {% block css %}<link href="{% static 'css/LoginPageStyles.css' %}" rel="stylesheet">{% endblock %}
 {% block title %}Регистрация{% endblock %}
@@ -6,7 +6,7 @@
 {% block content %}
     <div class="registerMainWindow">
         <div class="registerWindow">
-            <div class="logo"></div>
+            <a href="{% url "events:index" %}"><div class="logo"></div></a>
             {% if form.errors %}
                 <p style="color: crimson">Электронная почта и пароль не подходят</p>
             {% endif %}
@@ -14,7 +14,7 @@
                 <form method="post" novalidate>
                     {% csrf_token %}
                     {{ user_form.as_p }}
-                    <input type="submit" class="regButton" value="Регистрация">
+                    <input type="submit" class="regButton" value="Регистрация"  style="align-items: center">
                 </form>
             </div>
             <a style="color: white; text-decoration: none; margin-top: 15px" href="{% url "users:password_reset" %}">Забыли пароль?</a>

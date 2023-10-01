@@ -12,7 +12,7 @@ html, body{
     background-color: #4DA396;
     padding: 20px;
     border-radius: 15px;
-    min-height: 330px;
+    min-height: auto;
     margin-bottom: 30px;
     -webkit-box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
     -moz-box-shadow: 1px 11px 8px 0px rgba(34, 60, 80, 0.2);
@@ -33,9 +33,10 @@ html, body{
 .blockConfirmed{
     background-color: #4DA396;
     border-radius: 10px;
-    min-height: 300px;
+    min-height: auto;
     padding: 20px;
     border-radius: 20px;
+    margin-bottom: 100px;
     -webkit-box-shadow: 1px 11px 8px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 1px 11px 8px 0px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 11px 8px 0px rgba(0, 0, 0, 0.2);
@@ -105,7 +106,7 @@ html, body{
 }
 .container-fluid{
     padding-left: 0px;
-    padding-right: 0px;  
+    padding-right: 0px;
 }
 .activityImage{
     width: 300px;
@@ -116,14 +117,7 @@ html, body{
     background-repeat: no-repeat;
     border-radius: 20px;
 }
-.footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.footer h2{
-    display: inline;
-}
+
 .activityButtons p{
     font-size: 25px;
 }
@@ -157,11 +151,12 @@ html, body{
     object-fit: cover;
     background-size: cover;
     margin-right: 15px;
+    cursor: pointer;
 }
 .some{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
 }
 .achievements {
     display: flex;
@@ -173,4 +168,13 @@ html, body{
     height: 260px;
     object-fit: cover;
     border-radius: 20px;
+}
+
+.buttons {
+    background-color: #40877c;
+    color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 20px;
+    text-decoration: none;
 }

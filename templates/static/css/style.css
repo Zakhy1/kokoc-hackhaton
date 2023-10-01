@@ -1,0 +1,195 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: #CEFFE8;
+}
+.navbar-brand img{
+    margin-left: 10px;
+    width: 380px;
+    height: 90px;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+
+
+.navbar{
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    position: sticky;
+    width: 100%;
+    position: absolute;
+}
+.avatar{
+   
+    border-radius: 50%;
+    
+}
+.avatar img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 1s ease;
+}
+
+.avatar img:hover{
+   
+   border-radius: 10px;
+   transition: all 1s ease;
+}
+
+.navbar-menu{
+    list-style-type: none;
+}
+
+.navbar-menu li{
+    display: inline-block;  
+}
+
+ a {
+    display: inline-block;
+	color: #FFFFFF;
+	text-decoration: none;
+	padding: 10px;
+}
+
+.chelka{
+   position: absolute;
+    left: 50%;
+    transform: translate(-50%,-70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #4DA396;
+    width: 800px; 
+    border-radius: 0 0 40px 40px;
+}
+
+.lp{
+    max-width: 1920px;
+	height: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	background-repeat: no-repeat;
+}
+
+.slide1{
+   
+   display: flex;
+   align-items: center;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100vh;
+    background-image: url(img/runman.png);
+  
+}
+
+
+.about{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    height: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.aboutText{
+   width: 600px;
+   padding: 10px;
+   font-size: 20px
+}
+
+h1{
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    color: red;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.aboutIMG{
+    border-radius: 10px;
+    background-color: #4DA39699;
+}
+p{
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;;
+}
+
+
+
+.minus{
+    margin-top: -183px;
+}
+.fond{
+    padding: 40px;
+    background-color: #4DA396;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+    
+}
+.logo{
+    display: flex;
+    justify-content: flex-end;
+   align-items: center;
+}
+.glory{
+   
+    max-height: 1000px;
+    height: 900px;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+}
+.glory .col{
+    padding: 15px;
+   margin: 10px;
+   background-color: #61B2A3;
+   border-radius: 20px;
+}
+
+.align{
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+   
+}
+.align h2{
+    margin-left: 10px;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.footer h2{
+    display: inline;
+}
+.block{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.block2{
+    margin-top: 100px;
+}
+footer{
+    display: flex;
+    align-items: center;
+    height: 90px;
+    background-color: #4DA396;
+    justify-content: space-between;
+}
+footer h3{
+    padding: 20px;
+    color: #FFFFFF;
+}

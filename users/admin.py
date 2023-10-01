@@ -6,7 +6,7 @@ from users.models import User, Achievements
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ["email", "is_boss"]
+    list_display = ["email", "is_boss", "is_fond_owner"]
     search_fields = ["email"]
     ordering = ["id"]
 

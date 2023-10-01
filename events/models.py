@@ -30,6 +30,7 @@ class Event(models.Model):
                              on_delete=models.CASCADE,
                              related_name="funds")
     proof_needs = models.SmallIntegerField(default=0)
+    coins = models.PositiveIntegerField(default=5)
 
     def __str__(self):
         return self.title

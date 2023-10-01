@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/ProfilePageStyles.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/header_footer.css' %}">
 
 {% endblock %}
 
@@ -71,7 +72,7 @@
                         <p>Достижения</p>
                         <div class="achievements">
                             {% for achive in user.achievements.all %}
-                                <div class="achivmentImage"></div>
+                                <div class="achivmentImage" title="{{ achive.title }}"></div>
                             {% endfor %}
                         </div>
 
@@ -97,7 +98,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="some">
+                                    <div class="some" style="justify-content: flex-start">
                                         <img src="{{ item.fund.logo.url }}"
                                              class="activityImage2"/>
                                     </div>
@@ -108,8 +109,8 @@
                                         <p>Фонд: {{ item.fund.title }}</p>
                                         <p class="descriptionOnActive">{{ item.description }}</p>
                                         <div class="activityButtons">
-                                            <div></div>
-                                            <input type="button" value="Подтвердить активность"/>
+                                            <a href="#" class="buttons">Отказаться от активности</a>
+                                            <a href="#" class="buttons">Подтвердить активность</a>
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +138,7 @@
                         <div class="container-fluid">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <div class="some">
+                                    <div class="some" style="justify-content: flex-start;">
                                         <img src="{{ item.fund.logo.url }}"
                                              class="activityImage2"/>
                                     </div>
@@ -160,11 +161,6 @@
             </div>
         </div>
     {% endfor %}
-    <div class="container-fluid mt-5">
-        <div class="footer">
-            <h2>Copyright SPORT.LIFE 2023</h2>
-        </div>
-    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
             integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"

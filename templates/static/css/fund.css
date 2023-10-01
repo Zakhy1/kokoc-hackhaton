@@ -1,0 +1,74 @@
+body{
+   
+    background-color: #CEFFE8;}
+.navbar-brand img{
+    margin-left: 10px;
+    width: 380px;
+    height: 90px;
+    object-fit: cover;
+    position: relative;
+    z-index: 2;
+}
+
+
+.navbar{
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+    position: sticky;
+    width: 100%;
+    
+}
+.avatar{
+   
+    border-radius: 50%;
+    
+}
+.avatar img{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all 1s ease;
+}
+
+.avatar img:hover{
+   
+   border-radius: 10px;
+   transition: all 1s ease;
+}
+
+.navbar-menu{
+    list-style-type: none;
+}
+
+.navbar-menu li{
+    display: inline-block;  
+}
+
+.navbar-menu li a {
+    display: inline-block;
+	color: #FFFFFF;
+	text-decoration: none;
+	padding: 10px;
+}
+
+.chelka{
+   position: absolute;
+    left: 50%;
+    transform: translate(-50%,-70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: #4DA396;
+    width: 800px; 
+    border-radius: 0 0 40px 40px;
+}
+.fond{
+    padding: 40px;
+    background-color: #4DA396;
+    font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
+    margin-bottom: 100px;
+}

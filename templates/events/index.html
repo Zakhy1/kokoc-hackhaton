@@ -1,5 +1,10 @@
 {% extends "base.html" %}
-{% block tite %}Главная{% endblock %}
+{% load static %}
+{% block css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="icon" href="{% static "img/icons/favicon.png" %}">
+{% endblock %}
+{% block title %}Главная{% endblock %}
 
 {% block content %}
     <p><a href="{% url "users:register" %}">Регистрация пользователя</a></p>
@@ -10,5 +15,5 @@
     <p><a href="{% url "users:login" %}">Вход</a></p>
     <p><a href="{% url "users:logout" %}">Выход</a></p>
     <p><a href="#">Выбрать организацию</a></p>
-    <p><a href="#">Выбрать активность</a></p>
+    <p><a href="{% url "events:activities" %}">Выбор активности</a></p>
 {% endblock %}

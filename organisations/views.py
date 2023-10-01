@@ -22,6 +22,7 @@ def register_fund(request):
         return render(request, "events/reg_fund.html", {"form": form})
 
 
+@login_required
 def register_organisation(request):
     user = request.user
     if request.method == "POST":
